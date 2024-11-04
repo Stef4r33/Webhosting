@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAS Trucks GmbH - Unsere Fahrzeuge</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #0d0d0d;
+            color: #ffffff; text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #0d0d0d;
+            padding: 20px 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 10;
+            transition: background-color 0.3s;
+        }
+        header h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5em;
+            color: #ffffff;
+            margin: 0;
+        }
+        nav {
+            font-size: 1em;
+        }
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            margin-left: 30px;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: #6c63ff;
+        }
+        .hero {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: url('https://lh3.googleusercontent.com/p/AF1QipOoVZE6zG6eiI5wXjl58-C57abALepWDC8U0p7l=s1360-w1360-h1020') no-repeat center center/cover;
+            position: relative;
+        }
+        .hero::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        .hero-content {
+            position: relative;
+            text-align: center;
+            color: #ffffff;
+            z-index: 1;
+        }
+        .hero-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5em;
+            margin: 0 0 20px;
+        }
+        .hero-content p {
+            font-size: 1.5em;
+            margin-bottom: 30px;
+        }
+        .hero-content a {
+            background-color: #6c63ff;
+            color: #ffffff;
+            padding: 15px 30px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.5s ease;
+        }
+        .hero-content a:hover {
+            background-color: #5548c8;
+            transform: scale(1.05);
+        }
+        main {
+            max-width: 1200px;
+            margin: 80px auto;
+            padding: 20px;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 1.5s ease;
+            visibility: hidden;
+        }
+        main.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        .platforms {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            justify-items: center;
+            align-items: start;
+            gap: 80px;
+            margin-top: 50px;
+        }
+        .platform {
+            width: 300px;
+            transition: transform 0.4s, box-shadow 0.4s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            height: 100%;
+        }
+        .platform img {
+            width: 90%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
+        }
+        .platform a {
+            display: block;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #6c63ff;
+            font-weight: 600;
+            font-size: 1.3em;
+            transition: color 0.3s;
+            text-align: center;
+        }
+        .platform a:hover {
+            color: #5548c8;
+        }
+        footer {
+            background-color: #0d0d0d;
+            color: #ffffff;
+            text-align: center;
+            padding: 40px 0;
+            margin-top: 80px;
+            font-size: 1.2em;
+        }
+        /* Responsives Design */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+            .hero-content h2 {
+                font-size: 2.5em;
+            }
+            .platforms {
+                flex-direction: column;
+                align-items: center;
+            }
+            .platform {
+                width: 90%;
+            }
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const discoverButton = document.querySelector('.hero-content a');
+            const mainContent = document.querySelector('main');
+            
+            discoverButton.addEventListener('click', function(event) {
+                event.preventDefault();
+                mainContent.scrollIntoView({ behavior: 'smooth' });
+                setTimeout(() => {
+                    mainContent.classList.add('visible');
+                }, 600);
+            });
+        });
+    document.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            const navLinks = document.querySelectorAll('nav a');
+            if (window.scrollY > 50) {
+                header.style.backgroundColor = 'rgba(0, 0, 0, 0.9)';
+                navLinks.forEach(link => link.style.color = '#ffffff');
+            } else {
+                header.style.backgroundColor = '#0d0d0d';
+                navLinks.forEach(link => link.style.color = '#ffffff');
+            }
+        });
+    document.addEventListener('scroll', function() {
+            const mainContent = document.querySelector('main');
+            if (window.scrollY > 300) {
+                mainContent.classList.add('visible');
+            }
+        });
+    </script>
+</head>
+<body>
+
+    <!-- Kopfbereich mit Navigation -->
+    <header>
+        <img src="https://lh3.googleusercontent.com/cwxIAgX5aQ5gyBGAFidjhRIqUtLzJy9Q8eemy7okrnrMMjbP7NHf27qO37BZHoXBtjdQphVnV3wJT8iw=s265-w265-h265" alt="FAS Trucks GmbH Logo" style="width: 150px; height: auto; object-fit: contain;">
+    </header>
+
+    <!-- Hero Bereich -->
+    <div class="hero">
+        <div class="hero-content">
+            <h2>Fahrzeuge für jede Herausforderung</h2>
+            <p>Entdecke unsere große Auswahl an Nutzfahrzeugen</p>
+            <a href="#platforms">Jetzt entdecken</a>
+        </div>
+    </div>
+
+    <!-- Hauptbereich mit externen Links zu mobile.de und willhaben -->
+    <main id="platforms">
+        <h2>Unsere Fahrzeuge auf verschiedenen Plattformen</h2>
+        <div class="platforms">
+            <div class="platform">
+                <!-- Bild von mobile.de -->
+                <a href="https://home.mobile.de/FASTRUCKSGMBH#ses" target="_blank"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgahyvcoySVJ0JVBi2BS9X6TJRYIhCyktyIw&s" alt="Mobile.de Logo" style="width: 100%; height: auto; border-radius: 10px; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);"></a>
+                <a href="https://home.mobile.de/FASTRUCKSGMBH#ses" target="_blank">Fahrzeuge auf mobile.de ansehen</a>
+            </div>
+            <div class="platform">
+                <!-- Bild von willhaben -->
+                <a href="https://www.willhaben.at/iad/haendler/fas-trucks-gmbh/nutzfahrzeuge" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Unternehmenslogo_von_willhaben.svg/1200px-Unternehmenslogo_von_willhaben.svg.png" alt="Willhaben Logo" style="width: 100%; height: auto; border-radius: 10px; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);"></a>
+                <a href="https://www.willhaben.at/iad/haendler/fas-trucks-gmbh/nutzfahrzeuge" target="_blank">Fahrzeuge auf willhaben ansehen</a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Kontaktformular -->
+    <section id="kontakt" style="background-color: #1a1a1a; padding: 40px; margin-top: 50px; border-radius: 10px; max-width: 600px; margin-left: auto; margin-right: auto;">
+        <h2 style="font-family: 'Cormorant Garamond', serif; font-size: 2.5em; color: #ffffff; text-align: center; margin-bottom: 20px;">Suchen Sie Ihr Traumfahrzeug? Wir finden es für Sie!</h2>
+        <p style="text-align: center; font-size: 1.2em; color: #ffffff; margin-bottom: 30px;">Teilen Sie uns Ihre Wünsche mit, und wir machen uns auf die Suche nach dem perfekten Fahrzeug für Sie.</p>
+        <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 2em; color: #ffffff; text-align: center; margin-top: 40px;">Haben Sie ein Fahrzeug zu verkaufen? Wir sind interessiert!</h3>
+        <p style="text-align: center; font-size: 1.2em; color: #ffffff; margin-bottom: 30px;">Möchten Sie Ihr Fahrzeug verkaufen? Kontaktieren Sie uns und lassen Sie uns wissen, was Sie anbieten. Wir machen Ihnen gerne ein faires Angebot.</p>
+        <form action="send_email.php" method="post" style="display: flex; flex-direction: column; gap: 20px;">
+            <label for="name" style="font-size: 1.2em;">Name:</label>
+            <input type="text" id="name" name="name" style="padding: 10px; font-size: 1em; border-radius: 5px; border: none;" required>
+            
+            <label for="email" style="font-size: 1.2em;">E-Mail:</label>
+            <input type="email" id="email" name="email" style="padding: 10px; font-size: 1em; border-radius: 5px; border: none;" required>
+            
+            <label for="message" style="font-size: 1.2em;">Nachricht:</label>
+            <textarea id="message" name="message" rows="5" style="padding: 10px; font-size: 1em; border-radius: 5px; border: none;" required></textarea>
+            
+            <button type="submit" style="background-color: #6c63ff; color: #ffffff; padding: 15px; font-size: 1.2em; border: none; border-radius: 5px; cursor: pointer; transition: background-color 0.3s;">
+                Nachricht senden
+            </button>
+        </form>
+    </section>
+
+    <!-- Kontaktformular -->
+    <section id="kontakt" style="background-color: #1a1a1a; padding: 40px; margin-top: 50px; border-radius: 10px; max-width: 600px; margin-left: auto; margin-right: auto;">
+        <h2 style="font-family: 'Cormorant Garamond', serif; font-size: 2.5em; color: #ffffff; text-align: center; margin-bottom: 20px;">Suchen Sie Ihr Traumfahrzeug? Wir finden es für Sie!</h2>
+        <p style="text-align: center; font-size: 1.2em; color: #ffffff; margin-bottom: 30px;">Teilen Sie uns Ihre Wünsche mit, und wir machen uns auf die Suche nach dem perfekten Fahrzeug für Sie.</p>
+        <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 2em; color: #ffffff; text-align: center; margin-top: 40px;">Haben Sie ein Fahrzeug zu verkaufen? Wir sind interessiert!</h3>
+        <p style="text-align: center; font-size: 1.2em; color: #ffffff; margin-bottom: 30px;">Möchten Sie Ihr Fahrzeug verkaufen? Kontaktieren Sie uns und lassen Sie uns wissen, was Sie anbieten. Wir machen Ihnen gerne ein faires Angebot.</p>
+        <form action="mailto:markovic@markovictrucks.at" method="post" enctype="text/plain" style="display: flex; flex-direction: column; gap: 20px;">
+            <label for="name" style="font-size: 1.2em;">Name:</label>
+            <input type="text" id="name" name="name" style="padding: 10px; font-size: 1em; border-radius: 5px; border: none;">
+            
+            <label for="email" style="font-size: 1.2em;">E-Mail:</label>
+            <input type="email" id="email" name="email" style="padding: 10px; font-size: 1em; border-radius: 5px; border: none;">
+            
+            <label for="message" style="font-size: 1.2em;">Nachricht:</label>
+            <textarea id="message" name="message" rows="5" style="padding: 10px; font-size: 1em; border-radius: 5px; border: none;"></textarea>
+            
+            <button type="submit" style="background-color: #6c63ff; color: #ffffff; padding: 15px; font-size: 1.2em; border: none; border-radius: 5px; cursor: pointer; transition: background-color 0.3s;">
+                Nachricht senden
+            </button>
+        </form>
+    </section>
+
+    <!-- Fußzeile mit Copyright-Hinweis -->
+    <footer>
+        <p>&copy; 2024 FAS Trucks GmbH - Alle Rechte vorbehalten</p>
+    </footer>
+
+</body>
+</html>
