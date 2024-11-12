@@ -1,13 +1,5 @@
 {
   "rewrites": [
-    {
-      "source": "/sitemap.xml",
-      "destination": "/sitemap.xml"
-    }
-  ],
-  "functions": {
-    "api/*.php": {
-      "runtime": "vercel-php@0.7.3"
-    }
-  }
+    { "source": "/sitemap.xml", "destination": "/sitemap.xml" }
+  ]
 }
